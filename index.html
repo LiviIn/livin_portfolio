@@ -21,9 +21,37 @@
     header{display:flex; gap:24px; align-items:center}
 
     /* animated avatar / blob */
-    .hero-blob{width:140px;height:140px;border-radius:22px; background:linear-gradient(135deg,var(--accent),#6b00ff); position:relative; box-shadow:0 8px 40px rgba(11,18,32,0.6); overflow:hidden; transform:rotate(-6deg);}
-    .blob-inner{position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,0.06), transparent); mix-blend-mode:overlay; animation:float 6s ease-in-out infinite}
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+    .hero-blob {
+  width: 140px;
+  height: 140px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--accent), #6b00ff);
+  position: relative;
+  box-shadow: 0 8px 40px rgba(11, 18, 32, 0.6);
+  overflow: hidden;
+  transform: rotate(-6deg);
+}
+
+/* profile image inside blob */
+.hero-blob img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.1);
+  transition: transform 4s ease-in-out;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* subtle animated overlay light */
+.blob-inner {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
 
     /* neon name */
     h1{font-size:30px; margin:0 0 6px 0; letter-spacing:0.4px}
@@ -81,6 +109,13 @@
     .cursor{display:inline-block; width:2px; height:1.2em; background:var(--accent); margin-left:6px; animation:blink 1s steps(2) infinite}
     @keyframes blink{50%{opacity:0}}
 
+    /* float animation */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+  100% { transform: translateY(0); }
+}
+
     /* background particles canvas fullbleed */
     canvas#bgCanvas{position:fixed; inset:0; z-index:0; pointer-events:none}
     .wrap{position:relative; z-index:2}
@@ -92,6 +127,7 @@
     <header>
       <div style="display:flex;gap:16px;align-items:center">
         <div class="hero-blob">
+            <img src="Livin.png" alt="Livin R Profile Photo" />
           <div class="blob-inner"></div>
         </div>
         <div>
@@ -103,7 +139,7 @@
       <div class="top-links">
         <button class="btn" onclick="scrollToSection('projects')">Projects</button>
         <a class="btn" href="#contact">Contact</a>
-        <a class="btn" href="/mnt/data/LIVIN R Resume-2-software developer.pdf" download>Download CV</a>
+        <a class="btn" href="LIVIN R Resume-2-software developer.pdf" download>Download CV</a>
       </div>
     </header>
 
@@ -209,7 +245,7 @@
           <div class="section-title"><h3>Quick Links</h3></div>
           <a class="btn" href="#projects">View Projects</a>
           <a class="btn" href="#experience">Experience</a>
-          <a class="btn" href="/mnt/data/LIVIN R Resume-2-software developer.pdf" download>Download CV</a>
+          <a class="btn" href="LIVIN R Resume-2-software developer.pdf" download>Download CV</a>
         </div>
       </aside>
     </main>
@@ -267,3 +303,4 @@
   </script>
 </body>
 </html>
+
